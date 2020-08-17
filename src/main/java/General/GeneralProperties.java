@@ -43,7 +43,7 @@ public class GeneralProperties {
     public static final String driverLocationFireFox = (String) obj.get("driverLocationFireFox");
 
 
-    public static final String SiteURL1 = (String) obj.get("SiteURL1");
+    public static final String SiteURLIMDB = (String) obj.get("SiteURLIMDB");
     public static final String SiteURL2 = (String) obj.get("SiteURL2");
 
     public static String savedScreenshotLocation = (String) obj.get("savedScreenshotLocation");

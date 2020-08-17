@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.IMDBHomePage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class relativeLocatorsTest {
@@ -37,39 +38,58 @@ public class relativeLocatorsTest {
 
 
     @Test
-    public void firstTestRelativeLocator(){
+    public void testRelativeLocator(){
 
 
-        driver.get(GeneralProperties.SiteURL2);
+        driver.get(GeneralProperties.SiteURLIMDB);
         System.out.println("Opened driver");
 
         IMDBHomePage page = new IMDBHomePage(driver);
 
         //relative locators
-//        driver.findElement(By.cssSelector("div[class='list-group'] a")).click();  //sign in with imdb
         page.signInLink().click();
 
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-//        driver.findElement(By.id("ap_email")).sendKeys("test123");
-        page.email().sendKeys("test123");
-
-//        WebElement password = driver.findElement(By.id("ap_password"));
-//        password.sendKeys("pass123");
-        page.password().sendKeys("pass123");
-
-
-//        driver.findElement(RelativeLocator.withTagName("input").below(password)).click();
-        page.button().click();
-
-        //  (find by 'near' default is 50 pixels, or by specific location.)
-
         //new sleep- without exceptions
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
+
+        ArrayList<String> benefitsText = new ArrayList<String>();
+
+        for (int i=0; i<page.benefits().size(); i++) {
+
+            String benefit = page.benefits().get(i).getText();
+            benefitsText.add(benefit);
+        }
+
+
+        int numOfBenefits = benefitsText.size();
+
+        String message = "The benefits of having a free IMDB account are: ";
+
+        for(String benefit : benefitsText) {
+
+            if ((!benefit.equals("By signing in, you agree to IMDb's Conditions of Use and Privacy Policy.")) && !benefit.contains("by IMDb.com, Inc.")){
+                message = message + "* " + benefit + "\n\r";
+            }
+
+        }
+
+        System.out.println(message);
+
+
+
+        }
+
+
+
+
+
+
+
+
 
     }
 
 
 
 
-}
+

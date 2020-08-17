@@ -6,13 +6,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.locators.RelativeLocator;
 
+import java.util.List;
+
 public class IMDBHomePage {
 
 
 
     private WebDriver driver;
 
-    public By signInLink = By.cssSelector("div[class='list-group'] a");
+    public By signInLink = By.linkText("Sign In");
+
+    public By benefitsOfAccountHeadline = By.cssSelector("div[id='signin-perks'] h1");
+
+    //Relative Locators
+    public By benefit = RelativeLocator.withTagName("p").below(benefitsOfAccountHeadline);
+
+
+
 
     public By email = By.id("ap_email");
 
@@ -26,6 +36,15 @@ public class IMDBHomePage {
     public WebElement signInLink(){
         return driver.findElement(signInLink);
     }
+
+    public WebElement benefitsOfAccountHeadline(){
+        return driver.findElement(benefitsOfAccountHeadline);
+    }
+
+    public List<WebElement> benefits(){
+        return driver.findElements(benefit);
+    }
+
 
     public WebElement email(){
         return driver.findElement(email);
