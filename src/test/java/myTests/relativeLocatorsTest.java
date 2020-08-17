@@ -40,42 +40,36 @@ public class relativeLocatorsTest {
     @Test
     public void testRelativeLocator(){
 
+        // get all text under headline "Benefits of your free IMDb account" on IMDB.com's 'Sign In' page
 
         driver.get(GeneralProperties.SiteURLIMDB);
-        System.out.println("Opened driver");
 
         IMDBHomePage page = new IMDBHomePage(driver);
-
-        //relative locators
+        
         page.signInLink().click();
 
         //new sleep- without exceptions
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
 
+        //list of texts
         ArrayList<String> benefitsText = new ArrayList<String>();
 
         for (int i=0; i<page.benefits().size(); i++) {
 
-            String benefit = page.benefits().get(i).getText();
-            benefitsText.add(benefit);
+            String benefitText = page.benefits().get(i).getText();
+            benefitsText.add(benefitText);
         }
-
-
-        int numOfBenefits = benefitsText.size();
 
         String message = "The benefits of having a free IMDB account are: ";
 
-        for(String benefit : benefitsText) {
+        for(String benefit : benefitsText.subList( 1, benefitsText.size() )) {
 
             if ((!benefit.equals("By signing in, you agree to IMDb's Conditions of Use and Privacy Policy.")) && !benefit.contains("by IMDb.com, Inc.")){
-                message = message + "* " + benefit + "\n\r";
+                message = message +"\n\r"+ "* " + benefit + "\n\r";
             }
-
         }
 
         System.out.println(message);
-
-
 
         }
 
