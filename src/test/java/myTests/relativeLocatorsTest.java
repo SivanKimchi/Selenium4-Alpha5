@@ -8,7 +8,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import pages.IMDBHomePage;
 
 import java.io.IOException;
@@ -72,6 +74,7 @@ public class relativeLocatorsTest {
         }
 
         System.out.println(message);
+        System.out.println("Read the 'benefits' of imdb account, using 'below' locator in a loop of webelements");
 
         }
 
@@ -101,24 +104,54 @@ public class relativeLocatorsTest {
 
                     //Assert click was made on webelement located by relative locator - "above"
                     Assert.assertEquals(page.createAccountHeadline().getText(), "Sign-In");
-                    System.out.println("Clicked on IMDB log in option");
+                    System.out.println("Clicked on IMDB log-in option using 'above' locator in loop of webelements");
                     break;
                 }
             }
         }
+    }
+
+
+    @Test
+    public void testRelativeLocator3 () {
+
+        //relative locators right of / left of
+
+        IMDBHomePage page = new IMDBHomePage(driver);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(page.imdbPro()).build().perform();   //toRightOf search bar
+
+        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
+
+        Assert.assertTrue(page.imdbProButton().isDisplayed());
+        System.out.println("Hoovered over the element RIGHT to the search bar and validated 'imdbPro' button is displayed");
+
+        page.searchAllDropDown().click(); //roLeftOf search bar & toRightOf menu
+
+        String searchCategories= "Search categories are- " + "\r";
+        WebElement chosenCategory = null;
+
+        for (WebElement webElement : page.searchAllOptionsList()) {
+            searchCategories = searchCategories + webElement.getText() + "\n";
+
+            if (webElement.getText().equals("TV Episodes")) {   //use parameter if method is moved to IMDBhomePage class
+                chosenCategory = webElement;
+            }
+        }
+
+        System.out.println(searchCategories);
+        chosenCategory.click();
+        Assert.assertTrue(page.searchAllDropDown().getText().contains("TV Episodes"));
+        System.out.println("Clicked the element LEFT to search bar and chose a search category");
+
+        }
+
 
     }
 
 
 
-
-
-
-
-
-
-
-    }
 
 
 

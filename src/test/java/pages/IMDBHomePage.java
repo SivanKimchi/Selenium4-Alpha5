@@ -25,6 +25,8 @@ public class IMDBHomePage {
 
     public By signInOptionsList = RelativeLocator.withTagName("a").above(orDivider);
 
+    public By mainSearchBar = By.id("suggestion-search");
+
 
 //    public By signInNotice = By.cssSelector("div[id='signin-notice'] p");
 
@@ -41,6 +43,18 @@ public class IMDBHomePage {
 
     //Relative Locator
     public By button = RelativeLocator.withTagName("input").below(password);
+
+    //Relative Locator
+    public By imdbPro = RelativeLocator.withTagName("div").toRightOf(mainSearchBar);
+
+    public By imdbProButton = By.partialLinkText("Try IMDbPro Free");
+
+    public By menu = By.id("imdbHeader-navDrawerOpen--desktop");
+
+    //Relative Locator
+    public By searchAllDropDown = RelativeLocator.withTagName("div").toLeftOf(mainSearchBar).toRightOf(menu);
+
+    public By searchAllOptionsList = By.cssSelector("span[id='navbar-search-category-select-contents'] ul a");
 
 
 
@@ -63,6 +77,29 @@ public class IMDBHomePage {
     public List<WebElement> signInOptionsList(){
         return driver.findElements(signInOptionsList);
     }
+
+    public WebElement mainSearchBar(){
+        return driver.findElement(mainSearchBar);
+    }
+
+    public WebElement imdbPro(){
+        return driver.findElement(imdbPro);
+    }
+
+    public WebElement imdbProButton(){
+        return driver.findElement(imdbProButton);
+    }
+
+    public WebElement searchAllDropDown(){
+        return driver.findElement(searchAllDropDown);
+    }
+
+    public List<WebElement> searchAllOptionsList(){
+        return driver.findElements(searchAllOptionsList);
+    }
+
+
+
 
 
 
