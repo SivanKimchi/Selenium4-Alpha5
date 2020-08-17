@@ -18,9 +18,20 @@ public class IMDBHomePage {
 
     public By benefitsOfAccountHeadline = By.cssSelector("div[id='signin-perks'] h1");
 
-    //Relative Locators
+    //Relative Locator
     public By benefit = RelativeLocator.withTagName("p").below(benefitsOfAccountHeadline);
 
+    public By orDivider = By.cssSelector("p[class='divider-text']");
+
+    public By signInOptionsList = RelativeLocator.withTagName("a").above(orDivider);
+
+
+//    public By signInNotice = By.cssSelector("div[id='signin-notice'] p");
+
+    //Relative Locator
+//    public By createNewAccountButton = RelativeLocator.withTagName("a").above(signInNotice);
+
+    public By createAccountHeadline = By.cssSelector("h1[class='a-spacing-small']");
 
 
 
@@ -44,6 +55,28 @@ public class IMDBHomePage {
     public List<WebElement> benefits(){
         return driver.findElements(benefit);
     }
+
+    public WebElement orDivider(){
+        return driver.findElement(orDivider);
+    }
+
+    public List<WebElement> signInOptionsList(){
+        return driver.findElements(signInOptionsList);
+    }
+
+
+
+//    public WebElement signInNotice(){ return driver.findElement(signInNotice);
+//    }
+//
+//    public WebElement createNewAccountButton(){ return driver.findElement(createNewAccountButton);
+//    }
+
+    public WebElement createAccountHeadline(){
+        return driver.findElement(createAccountHeadline);
+    }
+
+
 
 
     public WebElement email(){
