@@ -66,6 +66,8 @@ public class IMDBHomePage {
 
     public By wikipediaResultHeadline = By.id("firstHeading");
 
+    public By logo = By.id("home_img");
+
 
 
 
@@ -93,16 +95,14 @@ public class IMDBHomePage {
         return driver.findElement(mainSearchBar);
     }
 
-    public WebElement imdbPro(){
-        return driver.findElement(imdbPro);
+    public WebElement imdbPro(){ return driver.findElement(imdbPro);
     }
 
     public WebElement imdbProButton(){
         return driver.findElement(imdbProButton);
     }
 
-    public WebElement searchAllDropDown(){
-        return driver.findElement(searchAllDropDown);
+    public WebElement searchAllDropDown(){ return driver.findElement(searchAllDropDown);
     }
 
     public List<WebElement> searchAllOptionsList(){
@@ -126,6 +126,9 @@ public class IMDBHomePage {
         return driver.findElement(wikipediaResultHeadline);
     }
 
+    public WebElement logo(){
+        return driver.findElement(logo);
+    }
 
 
 //    public WebElement signInNotice(){ return driver.findElement(signInNotice);
