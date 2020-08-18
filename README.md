@@ -7,4 +7,4 @@
 * Project is mainly for simple examples of new features of <b>Selenium 4</b>, and includes various websites. <b>For a larger scale project</b> check out [My Selenium (Lametayel.co.il) project](https://github.com/SivanKimchi/Selenium.git)
 
 <br/>
---More details in "Test plan" excel file
+
