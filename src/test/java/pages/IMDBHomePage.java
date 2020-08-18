@@ -1,12 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.locators.RelativeLocator;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class IMDBHomePage {
 
@@ -56,6 +58,15 @@ public class IMDBHomePage {
 
     public By searchAllOptionsList = By.cssSelector("span[id='navbar-search-category-select-contents'] ul a");
 
+    public By posterTitlesList = By.cssSelector("a[class^='ipc-poster-card__title']");
+
+    public By googleSearchBar = By.cssSelector("input[name='q']");
+
+    public By wikipediaSearchBar = By.id("searchInput");
+
+    public By wikipediaResultHeadline = By.id("firstHeading");
+
+
 
 
     public WebElement signInLink(){
@@ -98,8 +109,22 @@ public class IMDBHomePage {
         return driver.findElements(searchAllOptionsList);
     }
 
+    public List<WebElement> posterTitlesList(){
+        return driver.findElements(posterTitlesList);
+    }
 
 
+    public WebElement googleSearchBar(){
+        return driver.findElement(googleSearchBar);
+    }
+
+    public WebElement wikipediaSearchBar(){
+        return driver.findElement(wikipediaSearchBar);
+    }
+
+    public WebElement wikipediaResultHeadline(){
+        return driver.findElement(wikipediaResultHeadline);
+    }
 
 
 
@@ -129,6 +154,12 @@ public class IMDBHomePage {
     }
 
 
+    public void scroll(WebElement waitForVisibilityOf) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", waitForVisibilityOf);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        System.out.println("Scrolled to element");
+    }
 
     //constructor
     public IMDBHomePage(WebDriver driver) {

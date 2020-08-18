@@ -36,14 +36,14 @@ public class relativeLocatorsTest {
 
 
 
-//    @After
-//    public void quitTests() {
-//        driver.quit();
-//    }
+    @After
+    public void quitTests() {
+        driver.quit();
+    }
 
 
     @Test
-    public void testRelativeLocator(){
+    public void testRelativeLocatorBelow(){
 
         // get all text under headline "Benefits of your free IMDb account" on IMDB.com's 'Sign In' page
         //using relative locator "below"
@@ -52,7 +52,7 @@ public class relativeLocatorsTest {
         
         page.signInLink().click();
 
-        //new sleep- without exceptions
+        //new sleep method- without exceptions
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
 
         //list of texts
@@ -82,13 +82,13 @@ public class relativeLocatorsTest {
 
 
     @Test
-    public void testRelativeLocator2() {
+    public void testRelativeLocatorAbove() {
 
         IMDBHomePage page = new IMDBHomePage(driver);
 
         page.signInLink().click();
 
-        //new sleep- without exceptions
+        //new sleep method- without exceptions
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
 
         //reverse loop
@@ -113,7 +113,7 @@ public class relativeLocatorsTest {
 
 
     @Test
-    public void testRelativeLocator3 () {
+    public void testRelativeLocatorRightLeft() {
 
         //relative locators right of / left of
 
