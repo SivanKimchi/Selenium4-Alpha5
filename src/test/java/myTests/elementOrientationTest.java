@@ -31,10 +31,10 @@ public class elementOrientationTest {
     }
 
 
-//    @After
-//    public void quitTests() {
-//        driver.quit();
-//    }
+    @After
+    public void quitTests() {
+        driver.quit();
+    }
 
 
     @Test
