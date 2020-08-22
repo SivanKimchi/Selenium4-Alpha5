@@ -8,7 +8,9 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.Event;
 import org.openqa.selenium.devtools.log.Log;
+import org.openqa.selenium.devtools.log.model.LogEntry;
 import pages.IMDBHomePage;
 
 import java.io.IOException;
@@ -46,6 +48,8 @@ public class printFromDevToolsTest {
     public void testPrintFromDevToolsConseLogs() {
 
         driver.get("http://www.ynet.co.il");
+
+
 
     }
 }

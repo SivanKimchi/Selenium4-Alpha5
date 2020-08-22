@@ -68,6 +68,13 @@ public class IMDBHomePage {
 
     public By logo = By.id("home_img");
 
+    public By facebookLogo = By.cssSelector("a[title='Facebook']");
+
+    public By logoInIMDbLogin = By.cssSelector("a[class='a-link-nav-icon']");
+
+    public By upNext = By.cssSelector("div[class*='AutorotatePeekstyle__EditorialColumnTitleContainer'] span");
+
+    public By createNewAccountButton = By.cssSelector("a[class*='create-account']");
 
 
 
@@ -128,6 +135,22 @@ public class IMDBHomePage {
 
     public WebElement logo(){
         return driver.findElement(logo);
+    }
+
+    public WebElement facebookLogo(){
+        return driver.findElement(facebookLogo);
+    }
+
+    public WebElement logoInIMDbLogin(){
+        return driver.findElement(logoInIMDbLogin);
+    }
+
+    public WebElement upNext(){
+        return driver.findElement(upNext);
+    }
+
+    public WebElement createNewAccountButton(){
+        return driver.findElement(createNewAccountButton);
     }
 
 

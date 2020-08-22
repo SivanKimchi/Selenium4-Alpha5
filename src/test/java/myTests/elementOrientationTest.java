@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.IMDBHomePage;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
+
 
 public class elementOrientationTest {
 
