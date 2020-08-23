@@ -38,6 +38,8 @@ public class networkConditionsTest {
         tool = ((ChromeDriver) driver).getDevTools();
         tool.createSession();
 
+
+
     }
 
     @After
