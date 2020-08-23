@@ -15,8 +15,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.log.Log;
 import org.openqa.selenium.devtools.network.Network;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import pages.IMDBHomePage;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
@@ -45,11 +48,11 @@ public class testBlockResources {
 
     }
 
-//
-//    @After
-//    public void quitTests() {
-//        driver.quit();
-//    }
+
+    @After
+    public void quitTests() {
+        driver.quit();
+    }
 
 
     @Test
@@ -109,6 +112,40 @@ public class testBlockResources {
         File source = page.createNewAccountButton().getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(source, new File("./screenshots/noCSS.png"));
         System.out.println("Took screen shot of missing CSS example");
+
+    }
+
+    @Test    //in comments - compare SPECIFIC webElement image OR full page screenshot
+    public void testCompareImagesWithWithoutBlock() throws IOException {
+
+        driver.get(GeneralProperties.SiteURLIMDB);
+        IMDBHomePage page = new IMDBHomePage(driver);
+
+        //  ***  specific webElement
+//        page.signInLink().click();
+//        File source = page.createNewAccountButton().getScreenshotAs(OutputType.FILE);
+//        FileUtils.copyFile(source, new File("./screenshots/createAccountWithCSS.png"));
+        File screen = ((ChromeDriver)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screen, new File("./screenshots/visibilePageWithCSS.png"));
+
+        //loading without css
+        tool.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+        tool.send(Network.setBlockedURLs(ImmutableList.of("*.css"))); // block ALL css
+//        driver.get(GeneralProperties.SiteURLIMDB);
+        driver.navigate().refresh();      //page print
+
+//        page.signInLink().click();
+//        File source2 = page.createNewAccountButton().getScreenshotAs(OutputType.FILE);
+//        FileUtils.copyFile(source2, new File("./screenshots/createAccountWithoutCSS.png"));
+        File screen2 = ((ChromeDriver)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screen2, new File("./screenshots/visibilePageWithoutCSS.png"));
+
+//        BufferedImage withCSS = ImageIO.read(new File("./screenshots/createAccountWithCSS.png"));   //specific webElement
+//        BufferedImage withoutCSS = ImageIO.read(new File("./screenshots/createAccountWithoutCSS.png"));
+        BufferedImage withCSS = ImageIO.read(new File("./screenshots/visibilePageWithCSS.png"));
+        BufferedImage withoutCSS = ImageIO.read(new File("./screenshots/visibilePageWithoutCSS.png"));
+
+        Assert.assertTrue(page.compareImages(withCSS, withoutCSS)==false);
 
     }
 

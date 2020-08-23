@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.locators.RelativeLocator;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -185,6 +186,30 @@ public class IMDBHomePage {
         js.executeScript("arguments[0].scrollIntoView();", waitForVisibilityOf);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         System.out.println("Scrolled to element");
+    }
+
+
+
+    public boolean compareImages(BufferedImage imgA, BufferedImage imgB) {
+        // The images must be the same size.
+        if (imgA.getWidth() != imgB.getWidth() || imgA.getHeight() != imgB.getHeight()) {
+            return false;
+        }
+
+        int width  = imgA.getWidth();
+        int height = imgA.getHeight();
+
+        // Loop over every pixel.
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                // Compare the pixels for equality.
+                if (imgA.getRGB(x, y) != imgB.getRGB(x, y)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     //constructor
