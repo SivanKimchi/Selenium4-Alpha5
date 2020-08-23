@@ -33,7 +33,7 @@ public class emulateUserAgentTest {
         tool.createSession();
         // iOS user agent
         iOSUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148";
-        tool.send(Emulation.setUserAgentOverride(iOSUserAgent, Optional.of(""), Optional.of(""), Optional.empty()));
+        tool.send(Emulation.setUserAgentOverride(iOSUserAgent, Optional.of(""), Optional.empty()));
 
 
     }

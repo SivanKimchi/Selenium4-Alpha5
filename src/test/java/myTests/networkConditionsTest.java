@@ -66,7 +66,9 @@ public class networkConditionsTest {
     }
 
 
-    @Test   //this works inm ALPHA 6 version of selenium 4
+    /*
+
+    @Test   // *** this works in ALPHA 6 version of selenium 4
     public void testNetworkTypeAndPerformance() {
 
         //connection type = wifi
@@ -88,4 +90,7 @@ public class networkConditionsTest {
 
         metrics.forEach(metric -> System.out.println(metric.getName() + " " + metric.getValue()));  //will print all available performance metrics
     }
+
+    */
+
 }
